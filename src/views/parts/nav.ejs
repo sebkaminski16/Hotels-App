@@ -1,0 +1,43 @@
+<nav class="nav">
+    <div class="nav__logo-wrapper">
+        <img class="logo-wrapper__logo" src="https://i.ibb.co/v11P9bv/logo.png" />
+        <a href="/" class="logo-wrapper__text">Hotels App</a>
+    </div>
+    <div class="nav__links-wrapper">
+        <ul class="links-wrapper__ul">
+            <li><a class="links-wrapper__link" href="/add">Add hotel</a></li>
+            <li><a class="links-wrapper__link" href="/browse">Browse hotels</a></li>
+        </ul>
+    </div>
+    <div class="nav__login-wrapper">
+        <%if(!currentUser){%>
+        <a href="/login" class="login-wrapper__link">Log in</a>
+        <%} else{%>
+            <span class="login-wrapper__username"><%=currentUser.username%></span>
+            <form method="post" action="/logout">
+            <button class="button--logout">Log out</button>
+            </form>
+        <%}%>
+    </div>
+    <div class="nav__hamburger-wrapper">
+        <div class="nav__hamburger">
+            <span class="hamburger__line"></span>
+            <span class="hamburger__line"></span>
+            <span class="hamburger__line"></span>
+        </div>
+    </div>
+    <div class="nav__hamburger-menu">
+        <a class="hamburger-menu__link" href="/add">Add hotel</a>
+        <a class="hamburger-menu__link" href="/browse">Browse hotels</a>
+        <%if(!currentUser){%>
+        <a class="hamburger-menu__link login" href="/login">Log in</a>
+        <%} else{%>
+            <span class="login-wrapper__username">
+                <%=currentUser.username%>
+            </span>
+            <form method="post" action="/logout">
+                <button class="button--logout">Log out</button>
+            </form>
+        <%}%>
+    </div>
+</nav>
