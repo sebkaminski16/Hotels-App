@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('parts/head')%>
+
+    <body>
+        <div class="app">
+            <%-include('parts/nav.ejs')%>
+                <main class="main">
+                    <section class="main__header main__header--notfound">
+                        <h1 class="header__heading"><%=status%> <%=message%></h1>
+                    </section>
+                </main>
+                <%-include('parts/footer.ejs')%>
+        </div>
+        <%-include('parts/scripts/scroll.ejs')%>
+            <%-include('parts/scripts/hamburger.ejs')%>
+    </body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('parts/head')%>
+
+    <body>
+        <div class="app">
+            <%-include('parts/nav.ejs')%>
+                <main class="main">
+                    <section class="main__header main__header--browse smaller-height">
+                        <h1 class="header__heading">Browse our hotels</h1>
+                    </section>
+                    <section class="main__browse">
+                        <%if(success.length> 0){%>
+                                <span class="success--long absolute"><%=success%></span>
+                                <%}%>
+                        <%if(error.length> 0){%>
+                                <span class="error--long absolute"><%=error%></span>
+                        <%}%>
+                        <% hotels.forEach((hotel)=>{ %>
+                            <div class="card">
+                                <div class="card__image">
+                                    <img class="card-image" src="<%=hotel.image%>"/>
+                                </div>
+                                <div class="card__main">
+                                    <span class="card-title" style="text-align: center;"><%=hotel.title%></span>
+                                    <span class="card-place"><%=hotel.location%></span>
+                                </div>
+                                <div class="card__sub">
+                                    <span class="card-price"><%=hotel.price%> EUR / night</span>
+                                    <span><a class="card-details" href="/browse/<%=hotel._id%>">See details</a></span>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </section>
+                </main>
+                <%-include('parts/footer.ejs')%>
+        </div>
+        <%-include('parts/scripts/scroll.ejs')%>
+            <%-include('parts/scripts/hamburger.ejs')%>
+    </body>
+
+</html>

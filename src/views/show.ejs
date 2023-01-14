@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('parts/head')%>
+
+    <body>
+        <div class="app">
+            <%-include('parts/nav.ejs')%>
+                <main class="main">
+                    <section class="main__header main__header--browse">
+                        <h1 class="header__heading"><%=hotel.title%></h1>
+                        <h2 class="header__subheading"><%=hotel.location%></h2>
+                    </section>
+                    <section class="main__details">
+                        <div class="details__author">
+                            <div class="author-wrap">
+                            <img class="author__image" src="https://static.vecteezy.com/system/resources/previews/008/442/086/original/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"/>
+                            <span class="author__data"><%=hotel.user%></span>
+                            </div>
+                        </div>
+                        <div>
+                            <%if(currentUser && hotel.user===currentUser.username){%>
+                                <a href="/browse/<%=hotel._id%>/edit" class="button button--gold">Edit</a>
+                                <form method="post" action="/browse/<%=hotel._id%>?_method=DELETE">
+                                    <button class="button">Delete</button>
+                                </form>
+                            <%}%>
+                        </div>
+                        <div class="details__text">
+                            <span class="text__marks--left"><i class="fas fa-quote-left"></i></span>
+                            <span class="text__marks--right"><i class="fas fa-quote-right"></i></span>
+                            <p class="text__text"><%=hotel.text%></p>
+                        </div>
+                        <div class="details__price">
+                            <h1><b><%=hotel.user%></b>'s hotel is <span class="red"><%=hotel.price%> EUR / night</span></h1>
+                            <h2>See what users have to say about this place</h2>
+                        </div>
+                        <div class="details__reviews">
+                            <form class="add-review" method="post" action="/browse/<%=hotel._id%>/reviews" novalidate>
+                                <%if(success.length> 0){%>
+                                <span class="success"><%=success%></span>
+                                <%}%>
+                                <%if(error.length> 0){%>
+                                <span class="error"><%=error%></span>
+                                <%}%>
+                                <h3>Add your own review</h3>
+                                <textarea name="text" class="review-text"></textarea>
+                                <button class="button">Add</button>
+                            </form>
+                            <%for(let j = 0; j < hotel.reviews.length; j++){ %>
+                            <div class="review">
+                                <div class="text__text">
+                                <p><%=hotel.reviews[j].text%></p>
+                                </div>
+                                <p><b><%=hotel.reviews[j].user%></b></p>
+                                <%if(currentUser && hotel.reviews[j].user === currentUser.username){%>
+                                    <form method="post" action="/browse/<%=hotel._id%>/reviews/<%=hotel.reviews[j]._id%>?_method=DELETE">
+                                        <button class="button--delete">Delete review</button>
+                                    </form>
+                                <%}%>
+                            </div>
+                            <%}%>
+                        </div>
+                    </section>
+                </main>
+                <%-include('parts/footer.ejs')%>
+        </div>
+        <%-include('parts/scripts/scroll.ejs')%>
+        <%-include('parts/scripts/hamburger.ejs')%>
+        <script>
+            let mainHeaderBrowse = document.querySelector('.main__header--browse');
+            mainHeaderBrowse.style.background = `linear-gradient(rgb(0, 0, 0, 0.3), rgb(0, 0, 0, 0.3)), url('<%=hotel.image%>')`;
+            mainHeaderBrowse.style.backgroundSize = 'cover';
+            mainHeaderBrowse.style.backgroundPosition = 'center';
+        </script>
+    </body>
+</html>

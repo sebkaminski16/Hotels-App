@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('parts/head')%>
+<body>
+    <div class="app">
+        <%-include('parts/nav.ejs')%>
+        <main class="main">
+            <%if(success.length > 0){%>
+                <span class="success--long absolute"><%=success%></span>
+            <%}%>
+            <%if(error.length > 0){%>
+                <span class="error--long absolute"><%=error%></span>
+            <%}%>
+            <section class="main__header main__header--index">
+                <h1 class="header__heading">Browse <span class="red">the best</span> hotels in your area</h1>
+                <a href="/browse" class="button">Browse</a>
+            </section>
+            <section class="main__present">
+                <div class="present__people">
+                    <span class="present-icon"><i class="fa-solid fa-person"></i></span>
+                    <h2>Amazing people</h2>
+                    <p class="present-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam aliquid a ipsa cupiditate quis autem.</p>
+                </div>
+                <div class="present__hotels">
+                    <span class="present-icon"><i class="fa-solid fa-house-circle-check"></i></span>
+                    <h2>Well kept hotels</h2>
+                    <p class="present-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero neque, delectus consequatur maxime eos tenetur!</p>
+                </div>
+                <div class="present__help">
+                    <span class="present-icon"><i class="fa-solid fa-headset"></i></span>
+                    <h2>24/7 help</h2>
+                    <p class="present-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi iste suscipit corporis numquam, ea voluptas!</p>
+                </div>
+            </section>
+        </main>
+        <%-include('parts/footer.ejs')%>
+    </div>
+    <%-include('parts/scripts/scroll.ejs')%>
+    <%-include('parts/scripts/hamburger.ejs')%>
+</body>
+</html>

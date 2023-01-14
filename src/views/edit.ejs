@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('parts/head')%>
+
+    <body>
+        <div class="app">
+            <%-include('parts/nav.ejs')%>
+                <main class="main">
+                    <section class="main__header main__header--add smaller-height">
+                        <h1 class="header__heading">Add your hotel</h1>
+                    </section>
+                    <section class="main__add-form-wrapper">
+                        <h1>Fill out the fields</h1>
+                        <form class="main__add-form" method="post" action="/browse/<%=hotel._id%>?_method=PATCH">
+
+                            <div class="form-input city">
+                                <label for="city">Title</label>
+                                <input class="input" type="text" name="title" id="city" value="<%=hotel.title%>">
+                            </div>
+                            <div class="form-input country">
+                                <label for="country">Location</label>
+                                <input class="input" type="text" name="location" id="country" value="<%=hotel.location%>">
+                            </div>
+                            <div class="form-input price">
+                                <label for="price">image</label>
+                                <input class="input" type="text" name="image" id="price" value="<%=hotel.image%>">
+                            </div>
+                            <div class="form-input languages">
+                                <label for="languages">Price</label>
+                                <input class="input" type="text" name="price" id="languages" value="<%=hotel.price%>">
+                            </div>
+                            <div class="form-textarea">
+                                <textarea class="textarea" name="text" id="text" value="<%=hotel.text%>"></textarea>
+                                <label for="text">Add your description</label>
+                            </div>
+                            <div class="form-button">
+                                <button class="button">Add</button>
+                            </div>
+                        </form>
+                    </section>
+                </main>
+                <%-include('parts/footer.ejs')%>
+        </div>
+        <%-include('parts/scripts/scroll.ejs')%>
+            <%-include('parts/scripts/hamburger.ejs')%>
+    </body>
+
+</html>

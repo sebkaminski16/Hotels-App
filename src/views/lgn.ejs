@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('parts/head')%>
+
+    <body>
+        <div class="app">
+            <%-include('parts/nav.ejs')%>
+                <main class="main">
+                    <section class="main__header main__header--add smaller-height">
+                        <h1 class="header__heading">Log in our page</h1>
+                    </section>
+                    <section class="main__login">
+                        <form method="post" class="login__form">
+                            <%if(error.length > 0){%>
+                            <span class="error"><%=error%></span>
+                            <%}%>
+                            <label for="username">Username</label>
+                            <input class="input margin" type="text" name="username" id="username">
+                            <label for="password">Password</label>
+                            <input class="input margin" type="password" name="password" id="password">
+                            <button class="button margin">Log in</button>
+                            <span>Don't have an account yet? <a class="link" href="/register">Click here</a> to register</span>
+                        </form>
+                    </section>
+                </main>
+                <%-include('parts/footer.ejs')%>
+        </div>
+        <%-include('parts/scripts/scroll.ejs')%>
+            <%-include('parts/scripts/hamburger.ejs')%>
+    </body>
+
+</html>
