@@ -1,0 +1,20 @@
+<script>
+    let hamburger = document.querySelector('.nav__hamburger');
+    let hamburgerMenu = document.querySelector('.nav__hamburger-menu');
+    let hamburgerLine = document.querySelectorAll('.hamburger__line');
+    hamburger.addEventListener('click', ()=>{
+        if(hamburgerMenu.classList.contains('visible')){
+            hamburgerMenu.classList.remove('visible');
+            hamburgerMenu.classList.add('invisible');
+            hamburgerLine.forEach(el=>{
+                el.style.backgroundColor = 'white';
+            });
+        }else{
+        hamburgerMenu.classList.remove('invisible');
+        hamburgerMenu.classList.add('visible');
+        hamburgerLine.forEach(el => {
+                el.style.backgroundColor = 'black';
+            });
+        }
+    });
+</script>
